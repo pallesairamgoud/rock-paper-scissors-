@@ -1,0 +1,693 @@
+/* Reset and Base Styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Crimson Text', serif;
+    background: linear-gradient(135deg, #1a237e 0%, #283593 50%, #3949ab 100%);
+    color: #fff;
+    min-height: 100vh;
+    overflow-x: hidden;
+}
+
+/* Page Management */
+.page {
+    display: none;
+    min-height: 100vh;
+    padding: 20px;
+}
+
+.page.active {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+/* Welcome Page Styles */
+.welcome-container {
+    text-align: center;
+    z-index: 10;
+    position: relative;
+}
+
+.game-title {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(3rem, 8vw, 6rem);
+    font-weight: 900;
+    margin-bottom: 20px;
+    text-shadow: 4px 4px 8px rgba(0, 0, 0, 0.5);
+    letter-spacing: 0.1em;
+}
+
+.title-word {
+    display: inline-block;
+    margin: 0 10px;
+    background: linear-gradient(45deg, #ffd700, #ffed4e, #ffd700);
+    background-size: 200% 200%;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    animation: shimmer 3s ease-in-out infinite;
+}
+
+@keyframes shimmer {
+    0%, 100% { background-position: 200% 200%; }
+    50% { background-position: 0% 0%; }
+}
+
+.subtitle {
+    font-size: 1.5rem;
+    margin-bottom: 40px;
+    opacity: 0.9;
+    font-style: italic;
+}
+
+.start-button {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.4rem;
+    font-weight: 700;
+    padding: 20px 50px;
+    background: linear-gradient(45deg, #4caf50, #66bb6a);
+    color: white;
+    border: none;
+    border-radius: 15px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 
+        0 8px 15px rgba(76, 175, 80, 0.3),
+        inset 0 1px 0 rgba(255, 255, 255, 0.2);
+    transform: translateY(0);
+    letter-spacing: 0.1em;
+}
+
+.start-button:hover {
+    transform: translateY(-3px);
+    box-shadow: 
+        0 12px 25px rgba(76, 175, 80, 0.4),
+        inset 0 1px 0 rgba(255, 255, 255, 0.3);
+    background: linear-gradient(45deg, #43a047, #5cb85c);
+}
+
+.start-button:active {
+    transform: translateY(-1px);
+    box-shadow: 
+        0 6px 12px rgba(76, 175, 80, 0.3),
+        inset 0 1px 0 rgba(255, 255, 255, 0.2);
+}
+
+.background-pattern {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: 
+        radial-gradient(circle at 25% 25%, rgba(255, 215, 0, 0.1) 0%, transparent 70%),
+        radial-gradient(circle at 75% 75%, rgba(255, 215, 0, 0.05) 0%, transparent 70%);
+    animation: float 6s ease-in-out infinite;
+}
+
+@keyframes float {
+    0%, 100% { transform: translateY(0px); }
+    50% { transform: translateY(-20px); }
+}
+
+/* Setup Page Styles */
+.setup-container {
+    width: 100%;
+    max-width: 500px;
+    text-align: center;
+}
+
+.page-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 2.5rem;
+    margin-bottom: 30px;
+    color: #ffd700;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+}
+
+.setup-box {
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(10px);
+    border-radius: 20px;
+    padding: 40px;
+    box-shadow: 
+        0 8px 32px rgba(0, 0, 0, 0.3),
+        inset 0 1px 0 rgba(255, 255, 255, 0.2);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    animation: slideIn 0.5s ease-out;
+}
+
+@keyframes slideIn {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.input-group {
+    margin-bottom: 25px;
+    text-align: left;
+}
+
+.input-group label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: 600;
+    color: #ffd700;
+    font-size: 1.1rem;
+}
+
+.input-group input,
+.input-group select {
+    width: 100%;
+    padding: 12px 16px;
+    border-radius: 10px;
+    border: 2px solid rgba(255, 215, 0, 0.3);
+    background: rgba(255, 255, 255, 0.9);
+    color: #333;
+    font-size: 1rem;
+    transition: all 0.3s ease;
+}
+
+.input-group input:focus,
+.input-group select:focus {
+    outline: none;
+    border-color: #ffd700;
+    box-shadow: 0 0 10px rgba(255, 215, 0, 0.3);
+}
+
+.name-input-container {
+    display: flex;
+    gap: 10px;
+}
+
+.name-input-container input {
+    flex: 1;
+}
+
+.random-btn {
+    padding: 12px 20px;
+    background: linear-gradient(45deg, #ff9800, #ffb74d);
+    color: white;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    font-weight: 600;
+    transition: all 0.3s ease;
+    white-space: nowrap;
+}
+
+.random-btn:hover {
+    background: linear-gradient(45deg, #f57c00, #ff9800);
+    transform: translateY(-2px);
+}
+
+.confirm-button {
+    width: 100%;
+    padding: 15px;
+    font-size: 1.3rem;
+    font-weight: 700;
+    background: linear-gradient(45deg, #2196f3, #42a5f5);
+    color: white;
+    border: none;
+    border-radius: 12px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    margin-top: 10px;
+    letter-spacing: 0.05em;
+}
+
+.confirm-button:hover {
+    background: linear-gradient(45deg, #1976d2, #2196f3);
+    transform: translateY(-2px);
+    box-shadow: 0 8px 20px rgba(33, 150, 243, 0.3);
+}
+
+/* Game Page Styles */
+#game-page {
+    padding: 20px;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.game-header {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(2rem, 5vw, 3.5rem);
+    text-align: center;
+    margin-bottom: 30px;
+    background: linear-gradient(45deg, #ffd700, #ffed4e);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+    letter-spacing: 0.1em;
+}
+
+.game-container {
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+    align-items: center;
+}
+
+/* Scoreboard */
+.scoreboard {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 40px;
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(10px);
+    padding: 20px 40px;
+    border-radius: 20px;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+}
+
+.player-score,
+.computer-score {
+    text-align: center;
+}
+
+.player-score h3,
+.computer-score h3 {
+    font-size: 1.2rem;
+    margin-bottom: 10px;
+    color: #ffd700;
+}
+
+.score {
+    font-size: 3rem;
+    font-weight: 900;
+    font-family: 'Playfair Display', serif;
+    color: #fff;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+}
+
+.vs {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: #ff5722;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
+}
+
+.round-info {
+    font-size: 1.2rem;
+    color: #ffd700;
+    font-weight: 600;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
+}
+
+/* Battle Arena */
+.battle-arena {
+    width: 100%;
+    max-width: 800px;
+    background: rgba(0, 0, 0, 0.2);
+    border-radius: 20px;
+    padding: 30px;
+    margin: 20px 0;
+}
+
+.choice-display {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.player-choice,
+.computer-choice {
+    text-align: center;
+    flex: 1;
+}
+
+.player-choice h4,
+.computer-choice h4 {
+    font-size: 1.1rem;
+    margin-bottom: 15px;
+    color: #ffd700;
+}
+
+.choice-circle {
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+    background: linear-gradient(45deg, #fff, #f5f5f5);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 3rem;
+    margin: 0 auto;
+    box-shadow: 
+        0 8px 25px rgba(0, 0, 0, 0.3),
+        inset 0 1px 0 rgba(255, 255, 255, 0.8);
+    color: #333;
+    font-weight: 900;
+    transition: all 0.3s ease;
+}
+
+.vs-battle {
+    font-size: 2rem;
+    font-weight: 900;
+    color: #ff5722;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+    animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+    0%, 100% { transform: scale(1); }
+    50% { transform: scale(1.1); }
+}
+
+.battle-result {
+    text-align: center;
+    font-size: 1.5rem;
+    font-weight: 700;
+    min-height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #ffd700;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
+}
+
+/* Game Choices */
+.choices-container {
+    display: flex;
+    gap: 30px;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.choice-button {
+    background: linear-gradient(45deg, #fff, #f8f9fa);
+    border-radius: 20px;
+    padding: 25px;
+    width: 150px;
+    text-align: center;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 
+        0 8px 25px rgba(0, 0, 0, 0.2),
+        inset 0 1px 0 rgba(255, 255, 255, 0.8);
+    color: #333;
+    border: 3px solid transparent;
+}
+
+.choice-button:hover {
+    transform: translateY(-5px);
+    box-shadow: 
+        0 15px 35px rgba(0, 0, 0, 0.3),
+        inset 0 1px 0 rgba(255, 255, 255, 0.8);
+    border-color: #ffd700;
+}
+
+.choice-button.selected {
+    background: linear-gradient(45deg, #ffd700, #ffed4e);
+    border-color: #ff9800;
+    transform: translateY(-5px);
+}
+
+.choice-icon {
+    font-size: 3rem;
+    margin-bottom: 10px;
+    display: block;
+}
+
+.choice-button span {
+    font-weight: 700;
+    font-size: 1.1rem;
+    letter-spacing: 0.05em;
+}
+
+/* Battle Animations */
+.battle-animation {
+    animation: battleShake 0.5s ease-in-out;
+}
+
+@keyframes battleShake {
+    0%, 100% { transform: translateX(0); }
+    25% { transform: translateX(-10px); }
+    75% { transform: translateX(10px); }
+}
+
+.win-animation {
+    animation: winGlow 1s ease-in-out;
+}
+
+@keyframes winGlow {
+    0%, 100% { 
+        box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
+    }
+    50% { 
+        box-shadow: 
+            0 8px 25px rgba(0, 0, 0, 0.3),
+            0 0 30px rgba(76, 175, 80, 0.6);
+    }
+}
+
+.lose-animation {
+    animation: loseShake 0.5s ease-in-out;
+}
+
+@keyframes loseShake {
+    0%, 100% { transform: translateX(0); }
+    10%, 30%, 50%, 70%, 90% { transform: translateX(-5px); }
+    20%, 40%, 60%, 80% { transform: translateX(5px); }
+}
+
+/* Game Over Overlay */
+.overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.8);
+    display: none;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+    backdrop-filter: blur(5px);
+}
+
+.overlay.active {
+    display: flex;
+}
+
+.overlay-content {
+    text-align: center;
+    max-width: 600px;
+    padding: 0 20px;
+}
+
+.celebration {
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(15px);
+    border-radius: 25px;
+    padding: 50px;
+    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    animation: celebrationSlide 0.6s ease-out;
+}
+
+@keyframes celebrationSlide {
+    from {
+        opacity: 0;
+        transform: translateY(-50px) scale(0.8);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+    }
+}
+
+.win-celebration {
+    position: relative;
+    overflow: hidden;
+}
+
+.win-celebration h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: 2.5rem;
+    color: #ffd700;
+    margin-bottom: 20px;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+}
+
+.win-celebration h3 {
+    font-size: 2rem;
+    color: #4caf50;
+    margin-bottom: 20px;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3);
+}
+
+.lose-celebration h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: 2.2rem;
+    color: #ff5722;
+    margin-bottom: 20px;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+}
+
+.lose-celebration h3 {
+    font-size: 1.8rem;
+    color: #ff9800;
+    margin-bottom: 20px;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3);
+}
+
+.celebration p {
+    font-size: 1.2rem;
+    line-height: 1.6;
+    margin-bottom: 30px;
+    color: #fff;
+    opacity: 0.9;
+}
+
+.play-again-btn {
+    padding: 15px 40px;
+    font-size: 1.3rem;
+    font-weight: 700;
+    background: linear-gradient(45deg, #2196f3, #42a5f5);
+    color: white;
+    border: none;
+    border-radius: 12px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    letter-spacing: 0.05em;
+}
+
+.play-again-btn:hover {
+    background: linear-gradient(45deg, #1976d2, #2196f3);
+    transform: translateY(-3px);
+    box-shadow: 0 10px 25px rgba(33, 150, 243, 0.4);
+}
+
+/* Confetti Animation */
+.confetti {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    overflow: hidden;
+}
+
+.confetti::before,
+.confetti::after {
+    content: '';
+    position: absolute;
+    width: 10px;
+    height: 10px;
+    background: #ffd700;
+    animation: confettiFall 3s linear infinite;
+}
+
+.confetti::before {
+    left: 20%;
+    animation-delay: 0s;
+    background: #ff5722;
+}
+
+.confetti::after {
+    left: 80%;
+    animation-delay: 1s;
+    background: #4caf50;
+}
+
+@keyframes confettiFall {
+    0% {
+        transform: translateY(-100vh) rotate(0deg);
+        opacity: 1;
+    }
+    100% {
+        transform: translateY(100vh) rotate(720deg);
+        opacity: 0;
+    }
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .game-title {
+        font-size: 2.5rem;
+    }
+    
+    .title-word {
+        display: block;
+        margin: 5px 0;
+    }
+    
+    .choices-container {
+        gap: 15px;
+    }
+    
+    .choice-button {
+        width: 120px;
+        padding: 20px;
+    }
+    
+    .choice-icon {
+        font-size: 2.5rem;
+    }
+    
+    .scoreboard {
+        gap: 20px;
+        padding: 15px 25px;
+    }
+    
+    .choice-display {
+        flex-direction: column;
+        gap: 20px;
+    }
+    
+    .vs-battle {
+        order: 2;
+        margin: 10px 0;
+    }
+    
+    .setup-box {
+        padding: 30px 20px;
+    }
+    
+    .celebration {
+        padding: 30px 20px;
+        margin: 0 10px;
+    }
+    
+    .win-celebration h2,
+    .lose-celebration h2 {
+        font-size: 2rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .choice-button {
+        width: 100px;
+        padding: 15px;
+    }
+    
+    .choice-icon {
+        font-size: 2rem;
+    }
+    
+    .choice-circle {
+        width: 100px;
+        height: 100px;
+        font-size: 2.5rem;
+    }
+    
+    .score {
+        font-size: 2.5rem;
+    }
+}

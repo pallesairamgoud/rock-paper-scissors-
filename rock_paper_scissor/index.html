@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rock Paper Scissors - Classic Game</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700;900&family=Crimson+Text:wght@400;600&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Welcome Page -->
+    <div id="welcome-page" class="page active">
+        <div class="welcome-container">
+            <h1 class="game-title">
+                <span class="title-word">ROCK</span>
+                <span class="title-word">PAPER</span>
+                <span class="title-word">SCISSORS</span>
+            </h1>
+            <p class="subtitle">A Classic Battle of Wits</p>
+            <button id="start-btn" class="start-button">START GAME</button>
+        </div>
+        <div class="background-pattern"></div>
+    </div>
+
+    <!-- Setup Page -->
+    <div id="setup-page" class="page">
+        <div class="setup-container">
+            <h2 class="page-title">Game Setup</h2>
+            <div class="setup-box">
+                <div class="input-group">
+                    <label for="player-name">Enter Your Name:</label>
+                    <input type="text" id="player-name" placeholder="Your name" maxlength="20">
+                </div>
+                
+                <div class="input-group">
+                    <label for="computer-name">Computer Opponent Name:</label>
+                    <div class="name-input-container">
+                        <input type="text" id="computer-name" placeholder="Opponent name" maxlength="20">
+                        <button id="random-name-btn" class="random-btn">Random</button>
+                    </div>
+                </div>
+                
+                <div class="input-group">
+                    <label for="rounds">Number of Rounds:</label>
+                    <select id="rounds">
+                        <option value="3">Best of 3</option>
+                        <option value="5" selected>Best of 5</option>
+                        <option value="7">Best of 7</option>
+                        <option value="10">Best of 10</option>
+                    </select>
+                </div>
+                
+                <button id="confirm-setup" class="confirm-button">LET'S PLAY!</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Game Page -->
+    <div id="game-page" class="page">
+        <h2 class="game-header">ROCK PAPER SCISSORS</h2>
+        
+        <div class="game-container">
+            <!-- Scoreboard -->
+            <div class="scoreboard">
+                <div class="player-score">
+                    <h3 id="player-display-name">Player</h3>
+                    <div class="score" id="player-score">0</div>
+                </div>
+                <div class="vs">VS</div>
+                <div class="computer-score">
+                    <h3 id="computer-display-name">Computer</h3>
+                    <div class="score" id="computer-score">0</div>
+                </div>
+            </div>
+
+            <!-- Round Info -->
+            <div class="round-info">
+                <span>Round <span id="current-round">1</span> of <span id="total-rounds">5</span></span>
+            </div>
+
+            <!-- Battle Arena -->
+            <div class="battle-arena" id="battle-arena">
+                <div class="choice-display">
+                    <div class="player-choice">
+                        <h4>Your Choice</h4>
+                        <div class="choice-circle" id="player-choice-display">?</div>
+                    </div>
+                    <div class="vs-battle">VS</div>
+                    <div class="computer-choice">
+                        <h4>Opponent Choice</h4>
+                        <div class="choice-circle" id="computer-choice-display">?</div>
+                    </div>
+                </div>
+                
+                <div class="battle-result" id="battle-result"></div>
+            </div>
+
+            <!-- Game Choices -->
+            <div class="choices-container">
+                <div class="choice-button" data-choice="rock">
+                    <div class="choice-icon">🪨</div>
+                    <span>ROCK</span>
+                </div>
+                <div class="choice-button" data-choice="paper">
+                    <div class="choice-icon">📄</div>
+                    <span>PAPER</span>
+                </div>
+                <div class="choice-button" data-choice="scissors">
+                    <div class="choice-icon">✂️</div>
+                    <span>SCISSORS</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Game Over Overlay -->
+    <div id="game-over-overlay" class="overlay">
+        <div class="overlay-content">
+            <div id="win-celebration" class="celebration win-celebration">
+                <div class="confetti"></div>
+                <h2>🎉 CONGRATULATIONS! 🎉</h2>
+                <h3>You Won!</h3>
+                <p id="win-message">Victory belongs to those who believe in the beauty of their dreams. You've proven your strategic prowess!</p>
+                <button class="play-again-btn">PLAY AGAIN</button>
+            </div>
+            
+            <div id="lose-message" class="celebration lose-celebration">
+                <h2>💪 BETTER LUCK NEXT TIME! 💪</h2>
+                <h3>You Lose!</h3>
+                <p id="lose-motivational">Every champion was once a contender who refused to give up. This is just the beginning of your journey to mastery!</p>
+                <button class="play-again-btn">TRY AGAIN</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
